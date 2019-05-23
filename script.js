@@ -9,19 +9,35 @@ app.random = (min, max) => {
 
 
 
-app.sortedMovies = [];
+
+app.movieAppend = (sortedMovies) => {
+    $('.movieList').empty()
+    movieList.forEach( (item) => {
+        const boilerPlate = `<div class = "movieItem">
+        <img src="${sortedMovies.poster_path}" alt="${sortedMovies.title}"/>
+        <h2>${ortedMovies.title}</h2>
+        </div>`
+
+        $('.movieList').append(``)
+    });
+    
+}
+
 
 app.movieParse = (outputData, outputDataLength) => {
-
+    sortedMovies = [];
     for (let i = 0; i < 5; i++) {
         let randNum = app.random(0, outputData.results.length); 
         console.log(randNum)
-        app.sortedMovies.push(outputData.results[randNum])
+        sortedMovies.push(outputData.results[randNum])
     }
 
-    console.log(app.sortedMovies)
-
+    console.log(sortedMovies)
+    app.movieAppend(sortedMovies);
+    
 }
+
+
 
 
 

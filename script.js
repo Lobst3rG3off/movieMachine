@@ -7,7 +7,22 @@ app.random = (min, max) => {
     return num;
 }
 
-// 
+
+
+app.sortedMovies = [];
+
+app.movieParse = (outputData, outputDataLength) => {
+
+    for (let i = 0; i < 5; i++) {
+        let randNum = app.random(0, outputData.results.length); 
+        console.log(randNum)
+        app.sortedMovies.push(outputData.results[randNum])
+    }
+
+    console.log(app.sortedMovies)
+
+}
+
 
 
 
@@ -24,8 +39,10 @@ app.getMovies = (word) => {
         }
     }).then(function (data) {
         const outputData = data;
-        console.log(outputData)
-        console.log(outputData.results.length)
+        // console.log(outputData)
+        // console.log(outputData.results.length)
+        const outputDataLength = outputData.results.length;
+        app.movieParse(outputData, outputDataLength)
     })
 }
 

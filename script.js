@@ -12,10 +12,10 @@ app.random = (min, max) => {
 
 app.movieAppend = (sortedMovies) => {
     $('.movieList').empty()
-    movieList.forEach( (item) => {
+    sortedMovies.forEach( (item) => {
         const boilerPlate = `<div class = "movieItem">
-        <img src="${sortedMovies.poster_path}" alt="${sortedMovies.title}"/>
-        <h2>${ortedMovies.title}</h2>
+        <img src="https://image.tmdb.org/t/p/original${item.poster_path}" alt="${item.title}"/>
+        <h2>${item.title}</h2>
         </div>`
 
         $('.movieList').append(boilerPlate);

@@ -2,6 +2,14 @@ const app = {};
 
 app.key = `384043517e4aa58b6327d0789e3e5851`;
 
+app.random = (min, max) => {
+    let num = Math.floor(Math.random() * (max - min)) + min;
+    return num;
+}
+
+// 
+
+
 
 app.getMovies = (word) => {
     $.ajax({
@@ -14,8 +22,10 @@ app.getMovies = (word) => {
             query: word,
             page: 1
         }
-    }).then(function (results) {
-        console.log(results)
+    }).then(function (data) {
+        const outputData = data;
+        console.log(outputData)
+        console.log(outputData.results.length)
     })
 }
 

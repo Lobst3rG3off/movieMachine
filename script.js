@@ -14,7 +14,7 @@ app.movieAppend = (sortedMovies) => {
     $('.movieList').empty()
     sortedMovies.forEach( (item) => {
         const boilerPlate = `<div class = "movieItem">
-        <img src="https://image.tmdb.org/t/p/original${item.poster_path}" alt="${item.title}"/>
+        <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2${item.poster_path}" alt="${item.title}"/>
         <h2>${item.title}</h2>
         </div>`
 
@@ -25,15 +25,42 @@ app.movieAppend = (sortedMovies) => {
 
 
 app.movieParse = (outputData, outputDataLength) => {
-    sortedMovies = [];
-    for (let i = 0; i < 5; i++) {
-        let randNum = app.random(0, outputData.results.length); 
-        console.log(randNum)
-        sortedMovies.push(outputData.results[randNum])
-    }
+    
+    const sortedMoviesIndexes = [];
 
-    console.log(sortedMovies)
-    app.movieAppend(sortedMovies);
+let lessThanFive = true;
+
+while (lessThanFive) {
+    let randNum = app.random(0, outputData.results.length); 
+    if (sortedMoviesIndexes.indexOf(randNum) === -1) 
+    { sortedMoviesIndexes.push(randNum) } 
+
+    if (sortedMoviesIndexes.length === 5) {
+ lessThanFive = false
+    }
+}
+
+    // for (let i = 0; i < 5; i++) {
+
+
+
+
+
+    //     let randNum = app.random(0, outputData.results.length); 
+    //     // console.log(randNum)
+    //     // console.log(outputData.results[randNum])
+    //     // sortedMovies.push(outputData.results[randNum])
+    //     if (sortedMoviesIndexes.indexOf(randNum)=== -1)
+    //     { sortedMoviesIndexes.push(randNum)}
+    // }
+
+
+    let movieOutputArray = sortedMoviesIndexes.map(item => {
+        return outputData.results[item]
+    }) 
+
+    console.log(movieOutputArray)
+    app.movieAppend(movieOutputArray);
     
 }
 

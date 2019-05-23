@@ -18,7 +18,7 @@ app.movieAppend = (sortedMovies) => {
         <h2>${ortedMovies.title}</h2>
         </div>`
 
-        $('.movieList').append(``)
+        $('.movieList').append(boilerPlate);
     });
     
 }

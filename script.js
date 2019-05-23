@@ -25,16 +25,33 @@ app.movieAppend = (sortedMovies) => {
 
 
 app.movieParse = (outputData, outputDataLength) => {
-    sortedMovies = [];
-    for (let i = 0; i < 5; i++) {
-        let randNum = app.random(0, outputData.results.length); 
-        console.log(randNum)
-        sortedMovies.push(outputData.results[randNum])
-    }
-
-    console.log(sortedMovies)
-    app.movieAppend(sortedMovies);
-    
+    let sortedMovies = [];
+    let genNumbers = [];
+  
+    let randNum = undefined;
+   
+    function sortMovies() {
+        if (outputData.results.length < 5) {
+            for (i = 0; i < outputDataLength; i++) {
+                sortedMovies.push(outputData.results[i]);
+            } 
+            app.movieAppend(sortedMovies);
+        } else {
+            let randNum = app.random(0, outputDataLength);
+            if (genNumbers.includes(randNum)) {
+                sortMovies();
+            } else if (sortedMovies.length === 5) {
+                app.movieAppend(sortedMovies);
+                return
+            } else {
+                genNumbers.push(randNum)
+                sortedMovies.push(outputData.results[randNum]);
+                sortMovies();
+            }
+            }
+        }
+    console.log(genNumbers)
+    sortMovies();
 }
 
 

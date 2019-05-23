@@ -32,12 +32,17 @@ let lessThanFive = true;
 
 while (lessThanFive) {
     let randNum = app.random(0, outputData.results.length); 
+    
     if (sortedMoviesIndexes.indexOf(randNum) === -1) 
     { sortedMoviesIndexes.push(randNum) } 
 
     if (sortedMoviesIndexes.length === 5) {
  lessThanFive = false
     }
+    // if (sortedMoviesIndexes.length < 5) {
+    //     console.log(sortedMoviesIndexes.length)
+    //     return
+    // }
 }
 
     // for (let i = 0; i < 5; i++) {

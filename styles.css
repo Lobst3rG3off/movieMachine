@@ -178,4 +178,14 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   clip: rect(0 0 0);
   overflow: hidden;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
 /*# sourceMappingURL=styles.css.map */

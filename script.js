@@ -8,7 +8,8 @@ app.random = (min, max) => {
 }
 
 
-
+// pass sortedMovies to new function
+// on click of movie div, grab info and append to new div. maybe overlay?
 
 app.movieAppend = (sortedMovies) => {
     $('.movieList').empty()
@@ -21,7 +22,7 @@ app.movieAppend = (sortedMovies) => {
 
         $('.movieList').append(boilerPlate);
     });
-    
+    console.log(sortedMovies)
 }
 
 app.movieParse = (outputData, outputDataLength) => {
@@ -48,6 +49,7 @@ app.movieParse = (outputData, outputDataLength) => {
                 sortedMovies.push(outputData.results[randNum]);
                 sortMovies();
             }
+
         }
     }
     console.log(genNumbers)

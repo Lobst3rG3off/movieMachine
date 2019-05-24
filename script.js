@@ -20,7 +20,7 @@ app.movieAppend = (sortedMovies) => {
         <p>${item.overview}</p>
         </div>`
 
-        $('.movieList').append(boilerPlate);
+        $('.movieList').append(boilerPlate).hide().fadeIn(500);
     });
     console.log(sortedMovies)
 }
@@ -32,7 +32,7 @@ app.movieParse = (outputData, outputDataLength) => {
     let randNum = undefined;
 
     function sortMovies() {
-        if (outputData.results.length < 5) {
+        if (outputData.results.length < 6) {
             for (i = 0; i < outputDataLength; i++) {
                 sortedMovies.push(outputData.results[i]);
             }
@@ -41,7 +41,7 @@ app.movieParse = (outputData, outputDataLength) => {
             let randNum = app.random(0, outputDataLength);
             if (genNumbers.includes(randNum)) {
                 sortMovies();
-            } else if (sortedMovies.length === 5) {
+            } else if (sortedMovies.length === 6) {
                 app.movieAppend(sortedMovies);
                 return
             } else {

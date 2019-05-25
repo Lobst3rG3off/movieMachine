@@ -111,15 +111,12 @@ a {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    border: 2px solid blue;
-
     font-family: 'Oswald',
     sans-serif;
     
 
     .movieItem {
         width: 45%;
-        border: 2px solid red;
         margin: 5% 0;
         color: #F5F5F5;
         line-height: 30px;

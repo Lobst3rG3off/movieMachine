@@ -91,10 +91,10 @@ app.movieParse = (outputData, outputDataLength) => {
             }
         }
 
-    console.log(outputDataLength)
-    console.log(genNumbers)
+    // console.log(outputDataLength)
+    // console.log(genNumbers)
     sortMovies();
-    console.log(sortedMovies)
+    // console.log(sortedMovies)
 }
 
 app.getMovies = (word) => {
@@ -124,6 +124,7 @@ app.init = () => {
             $('html, body').animate({
                 scrollTop: $(".movieList").offset().top
             }, 2000);
+            $("#search").val('');
         } else {
             alert("Please enter a word!");
         }

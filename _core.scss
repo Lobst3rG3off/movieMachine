@@ -47,13 +47,14 @@ form {
     sans-serif;
 }
 
-a {
-width: 30px;
-height: 15px;
-background: grey;
-font-family: 'Oswald',
-sans-serif;
-border: 3px solid green;
+input[type=submit],
+button {
+    border-radius: 5px;
+    border: none;
+    background-color: grey;
+    font-family: 'Oswald',
+    sans-serif;
+    padding: 15px 30px; 
 }
 
 main {

@@ -311,13 +311,11 @@ a {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  border: 2px solid blue;
   font-family: 'Oswald', sans-serif;
 }
 
 .movieList .movieItem {
   width: 45%;
-  border: 2px solid red;
   margin: 5% 0;
   color: #F5F5F5;
   line-height: 30px;
@@ -335,5 +333,20 @@ a {
 .movieList .movieItem img {
   max-width: 100%;
   width: 100%;
+}
+
+@media (max-width: 710px) {
+  .movieList {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .movieList .movieItem {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

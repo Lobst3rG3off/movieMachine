@@ -279,6 +279,13 @@ button {
   margin-top: 5%;
 }
 
+button:hover,
+button:focus,
+input[type=submit]:hover,
+input[type=submit]:focus {
+  background-color: lightslategray;
+}
+
 input[type=text] {
   border-radius: 5px;
 }

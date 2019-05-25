@@ -14,7 +14,7 @@
 <body>
     
     <header>
-        <div class="movieHero wrapper">
+        <div class="movieHero wrapper" id="hero">
         <h1>Movie Suggestifier</h1>
         <h2>Type in a single word to see movie suggestions with that word in it!</h2>
         
@@ -22,7 +22,6 @@
             <label for="search"></label>
             <input type="text" id="search" placeholder="Enter a word">
             <input type="submit" value="Submit">
-            <a href="#" class="button">Reset</a>
         </form>
         </div>
     </header>
@@ -35,7 +34,10 @@
             
 
         </section>
-
+        <button>
+            <a href="#hero">Back to Top</a>
+        </button>
+        
     </main>
 
     <script src='https://code.jquery.com/jquery-3.2.1.min.js'

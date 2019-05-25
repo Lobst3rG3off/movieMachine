@@ -33,6 +33,13 @@ app.showDetails = (sortedMovies) => {
     })
 }
 
+app.addTabIndex = () => {
+    let movieItem = document.getElementsByClassName('movieItem')
+    Array.from(movieItem).forEach((item) => {
+        item.setAttribute('tabindex', '0');
+    })
+}
+
 app.movieAppend = (sortedMovies) => {
     $('.movieList').empty()
     $('.queryResult').empty()
@@ -60,6 +67,7 @@ app.movieAppend = (sortedMovies) => {
     $('.buttonGarage').append(`<button class="backToTop">
             <a href="#hero">Back to Top</a>
         </button>`)
+        app.addTabIndex();
 }
 
 app.movieParse = (outputData, outputDataLength) => {

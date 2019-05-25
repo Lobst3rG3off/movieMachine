@@ -1,33 +1,31 @@
 const app = {};
 
 app.key = `384043517e4aa58b6327d0789e3e5851`;
+app.searchTerm = undefined;
 
 app.random = (min, max) => {
     let num = Math.floor(Math.random() * (max - min)) + min;
     return num;
 }
 
-
 app.showDetails = (sortedMovies) => {
     $('.movieItem').on('click', (e) => {
         let $clickedDiv = $(e.target).closest('.movieItem');
-        // console.log(clickedDiv.data('id'))
         let clickedDivId = $clickedDiv.data('id');
-        // console.log(clickedDiv);
-        // console.log(clickedDivId);
-        // console.log(sortedMovies)
         sortedMovies.forEach( (movie) => {
             if (clickedDivId === movie.id) {
                 $clickedDiv.find('.movieOverview').empty();
-                // console.log(movie.overview)
-                const movieOverview = $(`<div class="movieOverview">
+                const $movieOverview = $(`<div class="movieOverview">
                 <p>Synopsis: ${movie.overview}</p>
                 <p>Release date: ${movie.release_date}</p>
                 <p>Popularity Rating: ${movie.popularity}</p>
                 <p>Voter Average: ${movie.vote_average}</p>
                 </div>`)
-                // $clickedDiv.append(movieOverview);    
-                movieOverview.hide().fadeIn(1500).appendTo($clickedDiv);
+                $movieOverview.hide().fadeIn(1500).appendTo($clickedDiv);
+                const $movieItemHeight = $('.movieItem').height();
+                $('html, body').animate({
+                    scrollTop: $($movieOverview).offset().top - ($movieItemHeight / 2)
+                }, 1000);
             }
         })
     })
@@ -35,15 +33,22 @@ app.showDetails = (sortedMovies) => {
 
 app.movieAppend = (sortedMovies) => {
     $('.movieList').empty()
+    $('.movieList').append(`<h2>You searched for: ${app.searchTerm}</h2>`);
     sortedMovies.forEach( (item) => {
-        const boilerPlate = `<div class="movieItem" data-id="${item.id}">
-        <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2${item.poster_path}" alt="${item.title}" data-id="${item.id}"/>
-        <h2>${item.title}</h2>
-        </div>`
 
-
-        $('.movieList').append(boilerPlate).hide().fadeIn(1000);
-
+        if (item.poster_path === null) {
+            const boilerPlate = `<div class="movieItem" data-id="${item.id}">
+            <img src="http://dhakamovies.com//Admin/main/no_poster.png" alt="${item.title}" data-id="${item.id}"/>
+            <h2>${item.title}</h2>
+            </div>`
+            $('.movieList').append(boilerPlate);
+        } else {
+            const boilerPlate = `<div class="movieItem" data-id="${item.id}">
+            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2${item.poster_path}" alt="${item.title}" data-id="${item.id}"/>
+            <h2>${item.title}</h2>
+            </div>`
+            $('.movieList').append(boilerPlate).hide().fadeIn(500);;
+        }
     });
     app.showDetails(sortedMovies);
 }
@@ -66,6 +71,7 @@ app.movieParse = (outputData, outputDataLength) => {
             app.movieAppend(sortedMovies);
         } else if (outputDataLength === 0) {
             $('.movieList').empty()
+            $('.movieList').append(`<h2>You searched for: ${app.searchTerm}</h2>`);
             $('.movieList').append(`<div class="movieItem">
                 <h2>Sorry, we couldn't find a relevant movie :(</h2>
                 </div>`)
@@ -103,21 +109,18 @@ app.getMovies = (word) => {
         }
     }).then(function (data) {
         const outputData = data;
-        // console.log(outputData)
-        // console.log(outputData.results.length)
         const outputDataLength = outputData.results.length;
         app.movieParse(outputData, outputDataLength)
     })
 }
 
-
 app.init = () => {
     $('form').on('submit', function (event) {
         event.preventDefault();
         if ($("#search").val() != '') {
-            const searchTerm = $('#search').val();
-            // $('#search').val('');
-            app.getMovies(searchTerm);
+            app.searchTerm = $('#search').val();
+            app.getMovies(app.searchTerm);
+            
         } else {
             alert("Please enter a word!");
         }

@@ -8,21 +8,44 @@ app.random = (min, max) => {
 }
 
 
-// pass sortedMovies to new function
-// on click of movie div, grab info and append to new div. maybe overlay?
+app.showDetails = (sortedMovies) => {
+    $('.movieItem').on('click', (e) => {
+        let $clickedDiv = $(e.target).closest('.movieItem');
+        // console.log(clickedDiv.data('id'))
+        let clickedDivId = $clickedDiv.data('id');
+        // console.log(clickedDiv);
+        // console.log(clickedDivId);
+        // console.log(sortedMovies)
+        sortedMovies.forEach( (movie) => {
+            if (clickedDivId === movie.id) {
+                $clickedDiv.find('.movieOverview').empty();
+                // console.log(movie.overview)
+                const movieOverview = $(`<div class="movieOverview">
+                <p>Synopsis: ${movie.overview}</p>
+                <p>Release date: ${movie.release_date}</p>
+                <p>Popularity Rating: ${movie.popularity}</p>
+                <p>Voter Average: ${movie.vote_average}</p>
+                </div>`)
+                // $clickedDiv.append(movieOverview);    
+                movieOverview.hide().fadeIn(1500).appendTo($clickedDiv);
+            }
+        })
+    })
+}
 
 app.movieAppend = (sortedMovies) => {
     $('.movieList').empty()
     sortedMovies.forEach( (item) => {
-        const boilerPlate = `<div class = "movieItem">
-        <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2${item.poster_path}" alt="${item.title}"/>
+        const boilerPlate = `<div class="movieItem" data-id="${item.id}">
+        <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2${item.poster_path}" alt="${item.title}" data-id="${item.id}"/>
         <h2>${item.title}</h2>
-        <p>${item.overview}</p>
         </div>`
 
+
         $('.movieList').append(boilerPlate).hide().fadeIn(500);
+
     });
-    console.log(sortedMovies)
+    app.showDetails(sortedMovies);
 }
 
 app.movieParse = (outputData, outputDataLength) => {
@@ -32,11 +55,20 @@ app.movieParse = (outputData, outputDataLength) => {
     let randNum = undefined;
 
     function sortMovies() {
-        if (outputData.results.length < 6) {
+
+
+
+        if (outputDataLength < 6 && outputDataLength != 0) {
+
             for (i = 0; i < outputDataLength; i++) {
                 sortedMovies.push(outputData.results[i]);
             }
             app.movieAppend(sortedMovies);
+        } else if (outputDataLength === 0) {
+            $('.movieList').empty()
+            $('.movieList').append(`<div class="movieItem">
+                <h2>Sorry, we couldn't find a relevant movie :(</h2>
+                </div>`)
         } else {
             let randNum = app.random(0, outputDataLength);
             if (genNumbers.includes(randNum)) {
@@ -48,66 +80,15 @@ app.movieParse = (outputData, outputDataLength) => {
                 genNumbers.push(randNum)
                 sortedMovies.push(outputData.results[randNum]);
                 sortMovies();
+                }
             }
-
         }
-    }
+
+    console.log(outputDataLength)
     console.log(genNumbers)
     sortMovies();
-
-    let movieOutputArray = app.movieParse.sortedMovies.map(item => {
-        return outputData.results[item]
-    })
-
-    console.log(movieOutputArray)
-    app.movieAppend(movieOutputArray);
-
+    console.log(sortedMovies)
 }
-
-
-// app.movieParse = (outputData, outputDataLength) => {
-    
-//     const sortedMoviesIndexes = [];
-
-// let lessThanFive = true;
-
-// while (lessThanFive) {
-//     let randNum = app.random(0, outputData.results.length); 
-    
-//     if (sortedMoviesIndexes.indexOf(randNum) === -1) 
-//     { sortedMoviesIndexes.push(randNum) } 
-
-//     if (sortedMoviesIndexes.length === 5) {
-//  lessThanFive = false
-//     }
-    // if (sortedMoviesIndexes.length < 5) {
-    //     console.log(sortedMoviesIndexes.length)
-    //     return
-    // }
-// }
-
-    // for (let i = 0; i < 5; i++) {
-
-
-
-
-
-    //     let randNum = app.random(0, outputData.results.length); 
-    //     // console.log(randNum)
-    //     // console.log(outputData.results[randNum])
-    //     // sortedMovies.push(outputData.results[randNum])
-    //     if (sortedMoviesIndexes.indexOf(randNum)=== -1)
-    //     { sortedMoviesIndexes.push(randNum)}
-    // }
-
-
-   
-
-
-
-
-
-
 
 app.getMovies = (word) => {
     $.ajax({

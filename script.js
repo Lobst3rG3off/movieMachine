@@ -56,7 +56,8 @@ app.movieAppend = (sortedMovies) => {
         }
     });
     app.showDetails(sortedMovies);
-    $('main').append(`<button>
+    $('.buttonGarage').empty()
+    $('.buttonGarage').append(`<button>
             <a href="#hero">Back to Top</a>
         </button>`)
 }
@@ -78,9 +79,9 @@ app.movieParse = (outputData, outputDataLength) => {
             }
             app.movieAppend(sortedMovies);
         } else if (outputDataLength === 0) {
-            $('.movieList').empty()
-            $('.movieList').append(`<h2>You searched for: ${app.searchTerm}</h2>`);
-            $('.movieList').append(`<div class="movieItem">
+            $('.queryResult').empty()
+            $('.queryResult').append(`<h2>You searched for: ${app.searchTerm}</h2>`);
+            $('.queryResult').append(`<div class="movieItem">
                 <h2>Sorry, we couldn't find a relevant movie :(</h2>
                 </div>`)
         } else {

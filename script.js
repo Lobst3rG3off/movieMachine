@@ -34,7 +34,9 @@ app.showDetails = (sortedMovies) => {
 app.movieAppend = (sortedMovies) => {
     $('.movieList').empty()
     $('.queryResult').empty()
-    $('.queryResult').append(`<h2>You searched for: ${app.searchTerm}</h2>`);
+    $('.queryResult').append(`<h2>You searched for: ${app.searchTerm}</h2>
+    <p> Click Poster for More Infomation</p>
+    `);
     sortedMovies.forEach( (item) => {
 
         if (item.poster_path === null) {

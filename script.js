@@ -42,7 +42,7 @@ app.movieAppend = (sortedMovies) => {
         </div>`
 
 
-        $('.movieList').append(boilerPlate).hide().fadeIn(500);
+        $('.movieList').append(boilerPlate).hide().fadeIn(1000);
 
     });
     app.showDetails(sortedMovies);

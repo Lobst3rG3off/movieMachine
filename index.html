@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,31 +9,32 @@
     <link href="https://fonts.googleapis.com/css?family=Merienda|Oswald&display=swap" rel="stylesheet">
     <title>Movie Machine!</title>
 
-    
-    
+
+
 </head>
+
 <body>
-    
+
     <header>
         <div class="overlay"></div>
         <div class="movieHero wrapper" id="hero">
-        <h1>Movie Suggestifier</h1>
-        <h2>Type in a single word to see movie suggestions with that word in it!</h2>
-        
-        <form action="">
-            <label for="search"></label>
-            <input type="text" id="search" placeholder="Enter a word">
-            <input type="submit" value=" 🍿 Submit 🍿 ">
-        </form>
+            <h1>Movie Suggestifier</h1>
+            <h2>Type in a single word to see movie suggestions with that word in it!</h2>
+
+            <form action="">
+                <label for="search"></label>
+                <input type="text" id="search" placeholder="Enter a word">
+                <input type="submit" value=" 🍿 Submit 🍿 ">
+            </form>
         </div>
     </header>
     <main>
         <div class="queryResult" role="status" aria-live="polite">
-            
+
         </div>
         <section class="movieList wrapper" role="status" aria-live="polite">
 
-            
+
 
         </section>
         <div class="buttonGarage" role="status" aria-live="polite">
@@ -41,7 +43,7 @@
         <!-- <button>
             <a href="#hero">Back to Top</a>
         </button> -->
-        
+
     </main>
 
     <script src='https://code.jquery.com/jquery-3.2.1.min.js'
@@ -49,4 +51,5 @@
     </script>
     <script src="script.js"></script>
 </body>
+
 </html>

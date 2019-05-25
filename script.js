@@ -12,7 +12,7 @@ app.showDetails = (sortedMovies) => {
     $('.movieItem').on('click', (e) => {
         let $clickedDiv = $(e.target).closest('.movieItem');
         let clickedDivId = $clickedDiv.data('id');
-        sortedMovies.forEach( (movie) => {
+        sortedMovies.forEach((movie) => {
             if (clickedDivId === movie.id) {
                 $clickedDiv.find('.movieOverview').empty();
                 const $movieOverview = $(`<div class="movieOverview">
@@ -23,7 +23,7 @@ app.showDetails = (sortedMovies) => {
                 </div>`)
                 $movieOverview.hide().fadeIn(1500).appendTo($clickedDiv);
 
-               
+
                 const $movieItemHeight = $('.movieItem').height();
                 $('html, body').animate({
                     scrollTop: $($movieOverview).offset().top - ($movieItemHeight / 2)
@@ -46,7 +46,7 @@ app.movieAppend = (sortedMovies) => {
     $('.queryResult').append(`<h2>You searched for: ${app.searchTerm}</h2>
     <p> Click Poster for More Infomation</p>
     `);
-    sortedMovies.forEach( (item) => {
+    sortedMovies.forEach((item) => {
 
         if (item.poster_path === null) {
             const boilerPlate = `<div class="movieItem" data-id="${item.id}">
@@ -67,7 +67,7 @@ app.movieAppend = (sortedMovies) => {
     $('.buttonGarage').append(`<button class="backToTop">
             <a href="#hero">Back to Top</a>
         </button>`)
-        app.addTabIndex();
+    app.addTabIndex();
 }
 
 app.movieParse = (outputData, outputDataLength) => {
@@ -103,9 +103,9 @@ app.movieParse = (outputData, outputDataLength) => {
                 genNumbers.push(randNum)
                 sortedMovies.push(outputData.results[randNum]);
                 sortMovies();
-                }
             }
         }
+    }
 
     // console.log(outputDataLength)
     // console.log(genNumbers)
@@ -144,7 +144,7 @@ app.init = () => {
         } else {
             alert("Please enter a word!");
         }
-    });   
+    });
 }
 
 

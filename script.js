@@ -35,6 +35,7 @@ app.movieAppend = (sortedMovies) => {
     $('.movieList').empty()
     $('.movieList').append(`<h2>You searched for: ${app.searchTerm}</h2>`);
     sortedMovies.forEach( (item) => {
+
         if (item.poster_path === null) {
             const boilerPlate = `<div class="movieItem" data-id="${item.id}">
             <img src="http://dhakamovies.com//Admin/main/no_poster.png" alt="${item.title}" data-id="${item.id}"/>

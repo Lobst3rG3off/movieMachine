@@ -184,6 +184,11 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   padding: 0;
 }
 
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
 header {
   background-image: url(./assets/rob-laughter-491252-unsplash.jpg);
   height: 100vh;
@@ -215,17 +220,30 @@ header .movieHero {
   background: white;
 }
 
-.wrapper {
-  width: 80%;
-  margin: 0 auto;
-}
-
 h1 {
   margin: 0 auto;
+  font-family: 'Permanent Marker', cursive;
+}
+
+h2 {
+  font-family: 'Permanent Marker', cursive;
 }
 
 form {
   margin: 0 auto;
+  font-family: 'Oswald', sans-serif;
+}
+
+a {
+  width: 30px;
+  height: 15px;
+  background: grey;
+  font-family: 'Oswald', sans-serif;
+  border: 3px solid green;
+}
+
+main {
+  background: #5C2828;
 }
 
 .movieList {
@@ -237,14 +255,17 @@ form {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 100%;
   border: 2px solid blue;
+  font-family: 'Oswald', sans-serif;
 }
 
 .movieList .movieItem {
   width: 45%;
   border: 2px solid red;
   margin: 5% 0;
+  color: #F5F5F5;
+  line-height: 30px;
+  padding: 5%;
 }
 
 .movieList .movieItem img {

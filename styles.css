@@ -217,7 +217,9 @@ header .movieHero {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background: white;
+  background: #827717;
+  border-radius: 5px;
+  border: 10px dotted yellow;
 }
 
 h1 {
@@ -227,11 +229,33 @@ h1 {
 
 h2 {
   font-family: 'Permanent Marker', cursive;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.queryResult {
+  margin: 4% 0;
+}
+
+.queryResult p {
+  color: white;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.75rem;
 }
 
 form {
   margin: 0 auto;
   font-family: 'Oswald', sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 2%;
 }
 
 input[type=submit],
@@ -241,10 +265,30 @@ button {
   background-color: grey;
   font-family: 'Oswald', sans-serif;
   padding: 15px 30px;
+  margin-top: 5%;
+}
+
+input[type=text] {
+  border-radius: 5px;
 }
 
 main {
   background: #5C2828;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 .movieList {
@@ -267,6 +311,14 @@ main {
   color: #F5F5F5;
   line-height: 30px;
   padding: 5%;
+}
+
+.movieList .movieItem p span {
+  color: #827717;
+}
+
+.movieList .movieItem h2 {
+  padding-bottom: 3%;
 }
 
 .movieList .movieItem img {

@@ -23,8 +23,9 @@ header {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        background: white;
-
+        background: #827717;
+        border-radius: 5px;
+        border: 10px dotted yellow;
     }
 
 }
@@ -39,12 +40,31 @@ h1 {
 h2 {
     font-family: 'Permanent Marker',
     cursive;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.queryResult {
+    margin: 4% 0;
+
+    p {
+        color: white;
+        text-align: center;
+        font-family: 'Oswald',
+        sans-serif;
+        font-size: 1.75rem;
+    }
 }
 
 form {
     margin: 0 auto;
     font-family: 'Oswald',
     sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    
 }
 
 input[type=submit],
@@ -55,10 +75,25 @@ button {
     font-family: 'Oswald',
     sans-serif;
     padding: 15px 30px; 
+    margin-top: 5%;
 }
+
+input[type=text]
+{
+border-radius: 5px;
+}
+
 
 main {
     background: #5C2828;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
 
 .movieList {
@@ -78,9 +113,20 @@ main {
         color: #F5F5F5;
         line-height: 30px;
         padding: 5%;
+
+        p span {
+            color: #827717;
+        }
+
+         h2 {
+             padding-bottom: 3%;
+         }
+         
         img {
             max-width: 100%;
             width: 100%;
+
+           
         }
 
     }

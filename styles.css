@@ -184,6 +184,11 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   padding: 0;
 }
 
+body,
+html {
+  cursor: url(./assets/smileyPopcorn.cur), pointer;
+}
+
 .wrapper {
   width: 80%;
   margin: 0 auto;

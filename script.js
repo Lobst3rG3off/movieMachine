@@ -46,7 +46,7 @@ app.movieAppend = (sortedMovies) => {
             <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2${item.poster_path}" alt="${item.title}" data-id="${item.id}"/>
             <h2>${item.title}</h2>
             </div>`
-            $('.movieList').append(boilerPlate);
+            $('.movieList').append(boilerPlate).hide().fadeIn(500);;
         }
     });
     app.showDetails(sortedMovies);
@@ -60,7 +60,10 @@ app.movieParse = (outputData, outputDataLength) => {
 
     function sortMovies() {
 
+
+
         if (outputDataLength < 6 && outputDataLength != 0) {
+
             for (i = 0; i < outputDataLength; i++) {
                 sortedMovies.push(outputData.results[i]);
             }

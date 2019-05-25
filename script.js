@@ -39,19 +39,18 @@ app.movieAppend = (sortedMovies) => {
     app.showDetails(sortedMovies);
 }
 
-// else if outputDataLength = 0 then throw error
-
 app.movieParse = (outputData, outputDataLength) => {
     let sortedMovies = [];
     let genNumbers = [];
-  
+
     let randNum = undefined;
-   
+
     function sortMovies() {
         if (outputDataLength < 6) {
+
             for (i = 0; i < outputDataLength; i++) {
                 sortedMovies.push(outputData.results[i]);
-            } 
+            }
             app.movieAppend(sortedMovies);
         } else {
             let randNum = app.random(0, outputDataLength);
@@ -67,6 +66,7 @@ app.movieParse = (outputData, outputDataLength) => {
                 }
             }
         }
+    }
     console.log(genNumbers)
     sortMovies();
     console.log(sortedMovies)

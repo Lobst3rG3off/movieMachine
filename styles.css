@@ -232,13 +232,14 @@ header .movieHero {
 
 h1 {
   margin: 0 auto;
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Libre Baskerville', serif;
   color: white;
   text-align: center;
+  font-size: 3rem;
 }
 
 h2 {
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Libre Baskerville', serif;
   color: white;
   font-size: 2rem;
   text-align: center;
@@ -272,7 +273,7 @@ input[type=submit],
 button {
   border-radius: 5px;
   border: none;
-  background-color: grey;
+  background-color: #DAA520;
   font-family: 'Oswald', sans-serif;
   padding: 15px 30px;
   margin-top: 5%;
@@ -323,7 +324,7 @@ a {
 }
 
 .movieList .movieItem p span {
-  color: #827717;
+  color: #FFD700;
 }
 
 .movieList .movieItem h2 {
@@ -333,6 +334,10 @@ a {
 .movieList .movieItem img {
   max-width: 100%;
   width: 100%;
+}
+
+.backToTop {
+  margin-bottom: 15px;
 }
 
 @media (max-width: 710px) {

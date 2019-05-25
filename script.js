@@ -8,21 +8,34 @@ app.random = (min, max) => {
 }
 
 
-// pass sortedMovies to new function
-// on click of movie div, grab info and append to new div. maybe overlay?
+app.showDetails = (sortedMovies) => {
+    $('.movieItem').on('click', (e) => {
+        let clickedDiv = $(e.target);
+        // console.log(clickedDiv.data('id'))
+        let clickedDivId = clickedDiv.data('id')
+        // console.log(sortedMovies)
+        sortedMovies.forEach( (movie) => {
+            if (clickedDivId === movie.id) {
+                console.log(movie.overview);
+            }
+        })
+    })
+}
 
 app.movieAppend = (sortedMovies) => {
     $('.movieList').empty()
     sortedMovies.forEach( (item) => {
-        const boilerPlate = `<div class = "movieItem">
-        <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2${item.poster_path}" alt="${item.title}"/>
+        const boilerPlate = `<div class="movieItem" data-id="${item.id}">
+        <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2${item.poster_path}" alt="${item.title}" data-id="${item.id}"/>
         <h2>${item.title}</h2>
         <p>${item.overview}</p>
         </div>`
-
         $('.movieList').append(boilerPlate);
+        
+        // const movieDetails = `<p>${item.overview}</p>`
+        
     });
-    console.log(sortedMovies)
+    app.showDetails(sortedMovies);
 }
 
 app.movieParse = (outputData, outputDataLength) => {
@@ -32,7 +45,8 @@ app.movieParse = (outputData, outputDataLength) => {
     let randNum = undefined;
 
     function sortMovies() {
-        if (outputData.results.length < 5) {
+        if (outputDataLength < 6) {
+
             for (i = 0; i < outputDataLength; i++) {
                 sortedMovies.push(outputData.results[i]);
             }
@@ -41,27 +55,20 @@ app.movieParse = (outputData, outputDataLength) => {
             let randNum = app.random(0, outputDataLength);
             if (genNumbers.includes(randNum)) {
                 sortMovies();
-            } else if (sortedMovies.length === 5) {
+            } else if (sortedMovies.length === 6) {
                 app.movieAppend(sortedMovies);
                 return
             } else {
                 genNumbers.push(randNum)
                 sortedMovies.push(outputData.results[randNum]);
                 sortMovies();
+                }
             }
-
         }
     }
     console.log(genNumbers)
     sortMovies();
-
-    let movieOutputArray = app.movieParse.sortedMovies.map(item => {
-        return outputData.results[item]
-    })
-
-    console.log(movieOutputArray)
-    app.movieAppend(movieOutputArray);
-
+    console.log(sortedMovies)
 }
 
 
@@ -89,9 +96,6 @@ app.movieParse = (outputData, outputDataLength) => {
     // for (let i = 0; i < 5; i++) {
 
 
-
-
-
     //     let randNum = app.random(0, outputData.results.length); 
     //     // console.log(randNum)
     //     // console.log(outputData.results[randNum])
@@ -99,14 +103,6 @@ app.movieParse = (outputData, outputDataLength) => {
     //     if (sortedMoviesIndexes.indexOf(randNum)=== -1)
     //     { sortedMoviesIndexes.push(randNum)}
     // }
-
-
-   
-
-
-
-
-
 
 
 app.getMovies = (word) => {

@@ -10,17 +10,24 @@ app.random = (min, max) => {
 
 app.showDetails = (sortedMovies) => {
     $('.movieItem').on('click', (e) => {
-        let clickedDiv = $(e.target);
+        let $clickedDiv = $(e.target).closest('.movieItem');
         // console.log(clickedDiv.data('id'))
-        let clickedDivId = clickedDiv.data('id')
+        let clickedDivId = $clickedDiv.data('id');
+        // console.log(clickedDiv);
+        // console.log(clickedDivId);
         // console.log(sortedMovies)
         sortedMovies.forEach( (movie) => {
             if (clickedDivId === movie.id) {
-                console.log(movie.overview)
-                // const modalDiv = `<div class="modal">
-                //                     <p>${movie.overview}</p>
-                //                  </div>`
-                // $('.movieList').append(boilerPlate);    
+                $clickedDiv.find('.movieOverview').empty();
+                // console.log(movie.overview)
+                const movieOverview = $(`<div class="movieOverview">
+                <p>Synopsis: ${movie.overview}</p>
+                <p>Release date: ${movie.release_date}</p>
+                <p>Popularity Rating: ${movie.popularity}</p>
+                <p>Voter Average: ${movie.vote_average}</p>
+                </div>`)
+                // $clickedDiv.append(movieOverview);    
+                movieOverview.hide().fadeIn(1500).appendTo($clickedDiv);
             }
         })
     })
@@ -32,7 +39,6 @@ app.movieAppend = (sortedMovies) => {
         const boilerPlate = `<div class="movieItem" data-id="${item.id}">
         <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2${item.poster_path}" alt="${item.title}" data-id="${item.id}"/>
         <h2>${item.title}</h2>
-        <p>${item.overview}</p>
         </div>`
         $('.movieList').append(boilerPlate);
     });
@@ -48,11 +54,16 @@ app.movieParse = (outputData, outputDataLength) => {
     let randNum = undefined;
    
     function sortMovies() {
-        if (outputDataLength < 6) {
+        if (outputDataLength < 6 && outputDataLength != 0) {
             for (i = 0; i < outputDataLength; i++) {
                 sortedMovies.push(outputData.results[i]);
             } 
             app.movieAppend(sortedMovies);
+        } else if (outputDataLength === 0) {
+            $('.movieList').empty()
+            $('.movieList').append(`<div class="movieItem">
+                <h2>Sorry, we couldn't find a relevant movie :(</h2>
+                </div>`)
         } else {
             let randNum = app.random(0, outputDataLength);
             if (genNumbers.includes(randNum)) {
@@ -67,6 +78,7 @@ app.movieParse = (outputData, outputDataLength) => {
                 }
             }
         }
+        console.log(outputDataLength)
     console.log(genNumbers)
     sortMovies();
     console.log(sortedMovies)

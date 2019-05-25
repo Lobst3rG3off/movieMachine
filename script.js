@@ -18,7 +18,7 @@ app.showDetails = (sortedMovies) => {
                 const $movieOverview = $(`<div class="movieOverview">
                 <p><span>Synopsis:</span> ${movie.overview}</p>
                 <p><span>Release date:</span> ${movie.release_date}</p>
-                <p><span>opularity Rating:</span>P ${movie.popularity}</p>
+                <p><span>Popularity Rating:</span> ${movie.popularity}</p>
                 <p><span>Voter Average:</span> ${movie.vote_average}</p>
                 </div>`)
                 $movieOverview.hide().fadeIn(1500).appendTo($clickedDiv);
@@ -30,6 +30,13 @@ app.showDetails = (sortedMovies) => {
                 }, 1000);
             }
         })
+    })
+}
+
+app.addTabIndex = () => {
+    let movieItem = document.getElementsByClassName('movieItem')
+    Array.from(movieItem).forEach((item) => {
+        item.setAttribute('tabindex', '0');
     })
 }
 
@@ -52,14 +59,15 @@ app.movieAppend = (sortedMovies) => {
             <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2${item.poster_path}" alt="${item.title}" data-id="${item.id}"/>
             <h2>${item.title}</h2>
             </div>`
-            $('.movieList').append(boilerPlate).hide().fadeIn(500);;
+            $('.movieList').append(boilerPlate).hide().fadeIn(500);
         }
     });
     app.showDetails(sortedMovies);
     $('.buttonGarage').empty()
-    $('.buttonGarage').append(`<button>
+    $('.buttonGarage').append(`<button class="backToTop">
             <a href="#hero">Back to Top</a>
         </button>`)
+        app.addTabIndex();
 }
 
 app.movieParse = (outputData, outputDataLength) => {

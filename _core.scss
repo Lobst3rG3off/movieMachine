@@ -40,15 +40,16 @@ header {
 
 h1 {
     margin: 0 auto;
-    font-family: 'Permanent Marker',
+    font-family: 'Merienda',
     cursive;
     color: white;
     text-align: center;
+    font-size: 3rem;
 }
 
 h2 {
-    font-family: 'Permanent Marker',
-    cursive;
+   font-family: 'Merienda',
+   cursive;
     color: white;
     font-size: 2rem;
     text-align: center;
@@ -82,7 +83,7 @@ input[type=submit],
 button {
     border-radius: 5px;
     border: none;
-    background-color: grey;
+    background-color: #DAA520;
     font-family: 'Oswald',
     sans-serif;
     padding: 15px 30px; 
@@ -123,7 +124,7 @@ a {
         padding: 5%;
 
         p span {
-            color: #827717;
+            color: #FFD700;
         }
 
          h2 {
@@ -138,4 +139,8 @@ a {
         }
 
     }
+}
+
+.backToTop {
+margin-bottom: 15px;
 }

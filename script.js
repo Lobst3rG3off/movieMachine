@@ -16,12 +16,14 @@ app.showDetails = (sortedMovies) => {
             if (clickedDivId === movie.id) {
                 $clickedDiv.find('.movieOverview').empty();
                 const $movieOverview = $(`<div class="movieOverview">
-                <p>Synopsis: ${movie.overview}</p>
-                <p>Release date: ${movie.release_date}</p>
-                <p>Popularity Rating: ${movie.popularity}</p>
-                <p>Voter Average: ${movie.vote_average}</p>
+                <p><span>Synopsis:</span> ${movie.overview}</p>
+                <p><span>Release date:</span> ${movie.release_date}</p>
+                <p><span>opularity Rating:</span>P ${movie.popularity}</p>
+                <p><span>Voter Average:</span> ${movie.vote_average}</p>
                 </div>`)
                 $movieOverview.hide().fadeIn(1500).appendTo($clickedDiv);
+
+               
                 const $movieItemHeight = $('.movieItem').height();
                 $('html, body').animate({
                     scrollTop: $($movieOverview).offset().top - ($movieItemHeight / 2)
@@ -54,6 +56,9 @@ app.movieAppend = (sortedMovies) => {
         }
     });
     app.showDetails(sortedMovies);
+    $('main').append(`<button>
+            <a href="#hero">Back to Top</a>
+        </button>`)
 }
 
 app.movieParse = (outputData, outputDataLength) => {

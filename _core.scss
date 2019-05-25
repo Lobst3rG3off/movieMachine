@@ -47,6 +47,14 @@ h2 {
 
 .queryResult {
     margin: 4% 0;
+
+    p {
+        color: white;
+        text-align: center;
+        font-family: 'Oswald',
+        sans-serif;
+        font-size: 1.75rem;
+    }
 }
 
 form {
@@ -105,6 +113,10 @@ a {
         color: #F5F5F5;
         line-height: 30px;
         padding: 5%;
+
+        p span {
+            color: #827717;
+        }
 
          h2 {
              padding-bottom: 3%;

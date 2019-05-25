@@ -238,6 +238,13 @@ h2 {
   margin: 4% 0;
 }
 
+.queryResult p {
+  color: white;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.75rem;
+}
+
 form {
   margin: 0 auto;
   font-family: 'Oswald', sans-serif;
@@ -304,6 +311,10 @@ a {
   color: #F5F5F5;
   line-height: 30px;
   padding: 5%;
+}
+
+.movieList .movieItem p span {
+  color: #827717;
 }
 
 .movieList .movieItem h2 {

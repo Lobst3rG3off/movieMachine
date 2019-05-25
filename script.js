@@ -16,7 +16,11 @@ app.showDetails = (sortedMovies) => {
         // console.log(sortedMovies)
         sortedMovies.forEach( (movie) => {
             if (clickedDivId === movie.id) {
-                console.log(movie.overview);
+                console.log(movie.overview)
+                // const modalDiv = `<div class="modal">
+                //                     <p>${movie.overview}</p>
+                //                  </div>`
+                // $('.movieList').append(boilerPlate);    
             }
         })
     })
@@ -31,9 +35,6 @@ app.movieAppend = (sortedMovies) => {
         <p>${item.overview}</p>
         </div>`
         $('.movieList').append(boilerPlate);
-        
-        // const movieDetails = `<p>${item.overview}</p>`
-        
     });
     app.showDetails(sortedMovies);
 }
@@ -70,43 +71,6 @@ app.movieParse = (outputData, outputDataLength) => {
     sortMovies();
     console.log(sortedMovies)
 }
-
-
-// app.movieParse = (outputData, outputDataLength) => {
-    
-//     const sortedMoviesIndexes = [];
-
-// let lessThanFive = true;
-
-// while (lessThanFive) {
-//     let randNum = app.random(0, outputData.results.length); 
-    
-//     if (sortedMoviesIndexes.indexOf(randNum) === -1) 
-//     { sortedMoviesIndexes.push(randNum) } 
-
-//     if (sortedMoviesIndexes.length === 5) {
-//  lessThanFive = false
-//     }
-    // if (sortedMoviesIndexes.length < 5) {
-    //     console.log(sortedMoviesIndexes.length)
-    //     return
-    // }
-// }
-
-    // for (let i = 0; i < 5; i++) {
-
-
-
-
-
-    //     let randNum = app.random(0, outputData.results.length); 
-    //     // console.log(randNum)
-    //     // console.log(outputData.results[randNum])
-    //     // sortedMovies.push(outputData.results[randNum])
-    //     if (sortedMoviesIndexes.indexOf(randNum)=== -1)
-    //     { sortedMoviesIndexes.push(randNum)}
-    // }
-
 
 app.getMovies = (word) => {
     $.ajax({

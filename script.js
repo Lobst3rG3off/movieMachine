@@ -33,6 +33,7 @@ app.showDetails = (sortedMovies) => {
 
 app.movieAppend = (sortedMovies) => {
     $('.movieList').empty()
+    $('.queryResult').empty()
     $('.queryResult').append(`<h2>You searched for: ${app.searchTerm}</h2>`);
     sortedMovies.forEach( (item) => {
 
@@ -120,7 +121,9 @@ app.init = () => {
         if ($("#search").val() != '') {
             app.searchTerm = $('#search').val();
             app.getMovies(app.searchTerm);
-            
+            $('html, body').animate({
+                scrollTop: $(".movieList").offset().top
+            }, 2000);
         } else {
             alert("Please enter a word!");
         }
